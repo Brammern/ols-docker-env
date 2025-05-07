@@ -11,9 +11,8 @@ RUN curl -sSL https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin
        /usr/local/lsws/lsphp82/lib/php/${PHP_API}/ioncube_loader_lin_${PHP_VERSION}.so && \
     rm -rf /tmp/ioncube*
 
-# Disable OPcache by removing the file
-RUN rm -f /usr/local/lsws/lsphp82/etc/php/{PHP_VERSION}/mods-available/opcache.ini
-
-# Inject ionCube loader into php.ini
+# Inject ionCube loader into php.ini & Disable the prebuilt OPcache.
 RUN echo "zend_extension=/usr/local/lsws/lsphp82/lib/php/${PHP_API}/ioncube_loader_lin_${PHP_VERSION}.so" \
-    >> /usr/local/lsws/lsphp82/etc/php/${PHP_VERSION}/litespeed/php.ini
+    >> /usr/local/lsws/lsphp82/etc/php/${PHP_VERSION}/litespeed/php.ini && \
+    echo "opcache.enable=0" >> /usr/local/lsws/lsphp82/etc/php/${PHP_VERSION}/litespeed/php.ini && \
+    echo "opcache.enable_cli=0" >> /usr/local/lsws/lsphp82/etc/php/${PHP_VERSION}/litespeed/php.ini
