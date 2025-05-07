@@ -23,6 +23,8 @@ services:
       - ./logs:/usr/local/lsws/logs/
     environment:
       TZ: ${TimeZone}
+    ports:
+      - 7080:7080
   phpmyadmin:
     image: bitnami/phpmyadmin:5.2.2
     environment:
