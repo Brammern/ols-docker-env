@@ -13,8 +13,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   litespeed:
     # image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
-    build:
-      - ./custom
+    build: ./custom
     container_name: litespeed
     volumes:
       - ./lsws/conf:/usr/local/lsws/conf
