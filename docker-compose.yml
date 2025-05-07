@@ -23,7 +23,12 @@ services:
       - ./logs:/usr/local/lsws/logs/
     environment:
       TZ: ${TimeZone}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.whmcsv2.loadbalancer.server.port=80"
     ports:
+      - 8893:80
+      - 8822:22
       - 7080:7080
   phpmyadmin:
     image: bitnami/phpmyadmin:5.2.2
