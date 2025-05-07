@@ -11,14 +11,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    restart: always
-    networks:
-      - default
   litespeed:
     image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
     container_name: litespeed
-    env_file:
-      - .env
     volumes:
       - ./lsws/conf:/usr/local/lsws/conf
       - ./lsws/admin-conf:/usr/local/lsws/admin/conf
@@ -26,26 +21,13 @@ services:
       - ./sites:/var/www/vhosts/
       - ./acme:/root/.acme.sh/
       - ./logs:/usr/local/lsws/logs/
-    ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
-      - 7080:7080
-    restart: always
     environment:
       TZ: ${TimeZone}
-    networks:
-      - default
   phpmyadmin:
     image: bitnami/phpmyadmin:5.2.2
-    ports:
-      - 8081:8081
-      - 8443:8443
     environment:
         DATABASE_HOST: mysql
     restart: always
-    networks:
-      - default
   redis:
     image: "redis:alpine"
     logging:
@@ -56,9 +38,3 @@ services:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
-    restart: always
-    networks:
-      - default
-networks:
-  default:
-    driver: bridge
