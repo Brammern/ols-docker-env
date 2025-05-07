@@ -21,6 +21,7 @@ services:
       - ./sites:/var/www/vhosts/
       - ./acme:/root/.acme.sh/
       - ./logs:/usr/local/lsws/logs/
+      - ./php.ini:/usr/local/lsws/lsphp82/etc/php/8.2/litespeed/php.ini
     environment:
       TZ: ${TimeZone}
     labels:
