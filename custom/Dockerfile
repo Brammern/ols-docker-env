@@ -2,7 +2,7 @@ FROM litespeedtech/openlitespeed:1.8.3-lsphp82
 
 # Set variables
 ENV PHP_VERSION=8.2 \
-    PHP_API=20220829 \
+    PHP_API=20220829 
 
 # Install ionCube directly into PHP extensions dir
 RUN curl -sSL https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
