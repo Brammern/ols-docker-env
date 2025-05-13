@@ -2,7 +2,7 @@ FROM litespeedtech/openlitespeed:1.8.3-lsphp83
 
 # Set variables
 ENV PHP_VERSION=8.3 \
-    PHP_API=20220829 \
+    PHP_API=20230831 \
     LSPHP_VERSION=lsphp83
 
 # Install ionCube directly into PHP extensions dir
