@@ -1,4 +1,4 @@
-FROM litespeedtech/openlitespeed:1.8.3-lsphp83
+FROM litespeedtech/openlitespeed:1.8.4-lsphp83
 
 # Variables
 ENV PHP_VERSION=8.3 \
