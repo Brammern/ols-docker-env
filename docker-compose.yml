@@ -32,9 +32,9 @@ services:
       - 8822:22
       - 7080:7080
   phpmyadmin:
-    image: phpmyadmin:5.2
+    image: phpmyadmin:5.2.3
     environment:
-        DATABASE_HOST: mysql
+        PMA_HOST: mysql
     restart: always
   redis:
     image: "redis:alpine"
