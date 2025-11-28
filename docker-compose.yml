@@ -5,7 +5,7 @@ services:
       driver: none
     command: ["--max-allowed-packet=512M"]
     volumes:
-      - "./data/db:/var/lib/mysql:delegated"
+      - "/srv/litespeed/data/db:/var/lib/mysql:delegated"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -42,7 +42,7 @@ services:
       driver: none
     # command: redis-server --requirepass 8b405f60665e48f795752e534d93b722
     volumes:
-      - ./redis/data:/data
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - /srv/litespeed/redis/data:/data
+      - /srv/litespeed/redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
