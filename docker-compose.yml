@@ -32,7 +32,7 @@ services:
       - 8822:22
       - 7080:7080
   phpmyadmin:
-    image: phpmyadmin:5.2.3
+    image: phpmyadmin:${PHPMYADMIN_VERSION}
     environment:
         PMA_HOST: mysql
     restart: always
@@ -42,7 +42,7 @@ services:
       driver: none
     # command: redis-server --requirepass 8b405f60665e48f795752e534d93b722
     volumes:
-      - ./redis/data:/var/lib/redis
+      - ./redis/data:/data
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
