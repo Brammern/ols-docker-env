@@ -16,12 +16,12 @@ services:
     build: ./custom
     container_name: litespeed
     volumes:
-      - ./lsws/conf:/usr/local/lsws/conf
-      - ./lsws/admin-conf:/usr/local/lsws/admin/conf
-      - ./bin/container:/usr/local/bin
-      - ./sites:/var/www/vhosts/
-      - ./acme:/root/.acme.sh/
-      - ./logs:/usr/local/lsws/logs/
+      - /srv/litespeed/lsws/conf:/usr/local/lsws/conf
+      - /srv/litespeed/lsws/admin-conf:/usr/local/lsws/admin/conf
+      - /srv/litespeed/bin/container:/usr/local/bin
+      - /srv/litespeed/sites:/var/www/vhosts/
+      - /srv/litespeed/acme:/root/.acme.sh/
+      - /srv/litespeed/logs:/usr/local/lsws/logs/
     environment:
       TZ: ${TimeZone}
     labels:
