@@ -27,6 +27,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.whmcsv2.loadbalancer.server.port=80"
+      - 'traefik.http.routers.http-0-f440s4ckwc400kw8wow00808-litespeed.rule=Host(`client.mbserv.dk`) && Host(`shop.mbserv.dk`) && PathPrefix(`/`)'
+      - 'traefik.http.routers.https-0-f440s4ckwc400kw8wow00808-litespeed.rule=Host(`client.mbserv.dk`) && Host(`shop.mbserv.dk`) && PathPrefix(`/`)'
     ports:
       - 8893:80
       - 8822:22
