@@ -27,8 +27,14 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.whmcsv2.loadbalancer.server.port=80"
-      - 'traefik.http.routers.http-1-f440s4ckwc400kw8wow00808-litespeed.rule=(Host(`client.mbserv.dk`) || Host(`shop.mbserv.dk`)) && PathPrefix(`/`)'
-      - 'traefik.http.routers.https-1-f440s4ckwc400kw8wow00808-litespeed.rule=(Host(`client.mbserv.dk`) || Host(`shop.mbserv.dk`)) && PathPrefix(`/`)'
+      - 'traefik.http.routers.http-1-litespeed.entryPoints=http'
+      - 'traefik.http.routers.http-1-litespeed.rule=Host(`shop.mbserv.dk`) && PathPrefix(`/`)'
+      - 'traefik.http.routers.http-1-litespeed.middlewares=redirect-to-https'
+      - 'traefik.http.routers.https-1-litespeed.entryPoints=https'
+      - 'traefik.http.routers.https-1-litespeed.rule=Host(`shop.mbserv.dk`) && PathPrefix(`/`)'
+      - 'traefik.http.routers.https-1-litespeed.middlewares=gzip'
+      - 'traefik.http.routers.https-1-litespeed.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.https-1-litespeed.tls=true'
     ports:
       - 8893:80
       - 8822:22
